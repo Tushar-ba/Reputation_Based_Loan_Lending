@@ -16,7 +16,9 @@ contract LoanToken is Initializable,ERC20Upgradeable,OwnableUpgradeable,Reentran
         _;
     }
 
-    function initialize(address _lendingContractAddress) initializer {
+
+
+    function initialize(address _lendingContractAddress) initializer public {
         __Ownable_init(msg.sender);
         __ReentrancyGuard_init();
         __UUPSUpgradeable_init();
@@ -32,7 +34,7 @@ contract LoanToken is Initializable,ERC20Upgradeable,OwnableUpgradeable,Reentran
         _burn(_account, _value);
     }
 
-    function changeLendingContractAddress(address _contractAddress ) onlyOwner {
+    function changeLendingContractAddress(address _contractAddress ) onlyOwner public {
         LENDING_CONTRACT_ADDRESS = _contractAddress;
     }
 
